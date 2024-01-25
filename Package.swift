@@ -2,15 +2,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "web3.swift",
+    name: "web3w.swift",
     platforms: [
         .iOS(SupportedPlatform.IOSVersion.v13),
         .macOS(SupportedPlatform.MacOSVersion.v11),
         .watchOS(.v7)
     ],
     products: [
-        .library(name: "web3.swift", targets: ["web3"]),
-        .library(name: "web3-zksync.swift", targets: ["web3-zksync"])
+        .library(name: "web3w.swift", targets: ["web3w"]),
+        .library(name: "web3w-zksync.swift", targets: ["web3w-zksync"])
     ],
     dependencies: [
         .package(name: "BigInt", url: "https://github.com/attaswift/BigInt", from: "5.3.0"),
@@ -21,7 +21,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "web3",
+            name: "web3w",
             dependencies:
                 [
                     .target(name: "keccaktiny"),
@@ -37,10 +37,10 @@ let package = Package(
             exclude: ["ZKSync"]
         ),
          .target(
-            name: "web3-zksync",
+            name: "web3w-zksync",
             dependencies:
                 [
-                    .target(name: "web3")
+                    .target(name: "web3w")
                 ],
             path: "web3swift/src/ZKSync"
         ),
@@ -62,8 +62,8 @@ let package = Package(
             path: "web3swift/lib/CryptoSwift"
         ),
         .testTarget(
-            name: "web3swiftTests",
-            dependencies: ["web3", "web3-zksync"],
+            name: "web3wswiftTests",
+            dependencies: ["web3w", "web3w-zksync"],
             path: "web3sTests",
             resources: [
                 .copy("Resources/rlptests.json"),
